@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchTrendingGifs, fetchMoreGifs } from "../store/actions/gifs";
-
 import GifsList from '../components/GifsList';
+import { fetchGifs, fetchMoreGifs } from "../store/actions/gifs";
 
 class GifsListContainer extends Component {
   constructor(props) {
@@ -11,7 +10,7 @@ class GifsListContainer extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchTrendingGifs();
+    this.props.fetchGifs();
     window.addEventListener('scroll', this.handleScroll, { passive: true })
   }
 
@@ -25,7 +24,8 @@ class GifsListContainer extends Component {
     let height = d.offsetHeight;
 
     if (offset === height) {
-      setTimeout(this.props.fetchMoreGifs, 1000);
+      let method = this.props.query === '' ? 'trending' : 'search';
+      setTimeout(this.props.fetchMoreGifs.bind(this, method), 1000);
     }
   }
 
@@ -46,8 +46,9 @@ class GifsListContainer extends Component {
 
 const mapStateToProps = state => ({
   loading: state.gifs.gifs.loading,
-  gifs: state.gifs.gifs.items
+  gifs: state.gifs.gifs.items,
+  query: state.gifs.query
 });
 
 
-export default connect(mapStateToProps, { fetchTrendingGifs, fetchMoreGifs })(GifsListContainer);
+export default connect(mapStateToProps, { fetchGifs, fetchMoreGifs })(GifsListContainer);

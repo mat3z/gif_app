@@ -1,11 +1,10 @@
 import {
-  REQUEST_TRENDING_GIFS,
-  RECEIVE_TRENDING_GIFS,
+  REQUEST_GIFS,
+  RECEIVE_GIFS,
   REQUEST_MORE_GIFS,
   RECEIVE_MORE_GIFS,
-  REQUEST_SEARCHED_GIFS,
-  RECEIVE_SEARCHED_GIFS,
-  CHANGE_OFFSET
+  CHANGE_OFFSET,
+  SET_QUERY
 } from "../actionTypes";
 
 const initialState = {
@@ -13,12 +12,13 @@ const initialState = {
     loading: false,
     items: []
   },
-  offset: 0
+  offset: 0,
+  query: ''
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case REQUEST_TRENDING_GIFS:
+    case REQUEST_GIFS:
       return {
         ...state,
         gifs: {
@@ -26,7 +26,7 @@ export default (state = initialState, action) => {
           loading: true
         }
       };
-    case RECEIVE_TRENDING_GIFS:
+    case RECEIVE_GIFS:
       return {
         ...state,
         gifs: {
@@ -55,21 +55,10 @@ export default (state = initialState, action) => {
         ...state,
         offset: action.offset
       };
-    case REQUEST_SEARCHED_GIFS:
+    case SET_QUERY:
       return {
         ...state,
-        gifs: {
-          ...state.gifs,
-          loading: true
-        }
-      };
-    case RECEIVE_SEARCHED_GIFS:
-      return {
-        ...state,
-        gifs: {
-          loading: false,
-          items: [ ...action.gifs ]
-        }
+        query: action.query
       };
     default:
       return state;

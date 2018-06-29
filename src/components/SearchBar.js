@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchSearchedGifs, fetchTrendingGifs } from '../store/actions/gifs';
+import { fetchGifs } from '../store/actions/gifs';
 
 class SearchBar extends Component {
   constructor(props){
@@ -8,11 +8,12 @@ class SearchBar extends Component {
     this.timeout = null;
   }
 
-  fetchGifs = text => text.length ? this.props.fetchSearchedGifs(text) : this.props.fetchTrendingGifs();
+  // fetchSomeGifs = text => text.length ? this.props.fetchSearchedGifs(text) : this.props.fetchTrendingGifs();
 
   handleChange = e => {
     clearTimeout(this.timeout);
-    this.timeout = setTimeout(this.fetchGifs.bind(this, e.target.value), 2000)
+    this.timeout = setTimeout(this.props.fetchGifs.bind(this, 'search', e.target.value), 2000)
+    // this.timeout = setTimeout(this.fetchSomeGifs.bind(this, e.target.value), 2000)
     // this.timeout = setTimeout(this.props.fetchSearchedGifs.bind(this, e.target.value), 2000)
   };
 
@@ -41,4 +42,4 @@ class SearchBar extends Component {
   }
 }
 
-export default connect(null, { fetchSearchedGifs, fetchTrendingGifs })(SearchBar);
+export default connect(null, { fetchGifs })(SearchBar);

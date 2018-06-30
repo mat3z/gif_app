@@ -10,7 +10,9 @@ class GifsListContainer extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchGifs();
+    if (!this.props.gifs.length) {
+      this.props.fetchGifs();
+    }
     window.addEventListener('scroll', this.handleScroll, { passive: true })
   }
 

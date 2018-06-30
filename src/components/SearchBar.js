@@ -8,13 +8,13 @@ class SearchBar extends Component {
     this.timeout = null;
   }
 
-  // fetchSomeGifs = text => text.length ? this.props.fetchSearchedGifs(text) : this.props.fetchTrendingGifs();
-
   handleChange = e => {
     clearTimeout(this.timeout);
     this.timeout = setTimeout(this.props.fetchGifs.bind(this, 'search', e.target.value), 2000)
-    // this.timeout = setTimeout(this.fetchSomeGifs.bind(this, e.target.value), 2000)
-    // this.timeout = setTimeout(this.props.fetchSearchedGifs.bind(this, e.target.value), 2000)
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
   };
 
   render() {
@@ -23,7 +23,9 @@ class SearchBar extends Component {
         margin: '100px auto',
         textAlign: 'center'
       }}>
-        <form>
+        <form
+          onSubmit={this.handleSubmit}
+        >
           <input
             type="text"
             placeholder="Search for gifs..."
@@ -31,10 +33,15 @@ class SearchBar extends Component {
             onChange={this.handleChange}
             style={{
               fontSize: '40px',
+              fontColor: '#111111',
               padding: '10px',
               textAlign: 'center',
-              boxShadow: '0px 0px 8px 4px rgba(136,136,136,1)'
+              boxShadow: '0px 0px 8px 4px rgba(136,136,136,1)',
+              backgroundColor: '#999999',
+              outline: 'none',
+              border: 'none'
             }}
+            autoComplete="off"
           />
         </form>
       </div>

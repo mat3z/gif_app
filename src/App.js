@@ -20,7 +20,7 @@ const App = () => (
           component={FavouritesPage}
         />
         <Route
-          exact path='/gif_app'
+          exact path='/gif_app/'
           component={Main}
         />
         <TopButton />

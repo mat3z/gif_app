@@ -34,7 +34,7 @@ const Navbar = () => (
               fontSize: '2em'
             }}
           >
-            <Link to='/gif_app' style={{...linkStyle}}>TRENDING</Link>
+            <Link to='/gif_app/' style={{...linkStyle}}>TRENDING</Link>
             <Link to='/gif_app/favourites' style={{...linkStyle}}>FAVOURITES</Link>
           </div>
         )

@@ -5,6 +5,8 @@ import { configureStore } from "./store";
 import FavouritesPage from './containers/FavouritesPage';
 import Navbar from './containers/Navbar';
 import Main from './components/Main';
+import TopButton from './containers/TopButton'
+
 
 const store = configureStore();
 
@@ -21,6 +23,7 @@ const App = () => (
           exact path='/'
           component={Main}
         />
+        <TopButton />
       </div>
     </Router>
   </Provider>

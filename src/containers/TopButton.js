@@ -40,8 +40,11 @@ class TopButton extends Component {
   }
 
   goToTop() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
+    window.scrollTo({
+      'behavior': 'smooth',
+      'left': 0,
+      'top': 0
+    })
   }
 
   render() {

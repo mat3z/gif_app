@@ -16,11 +16,11 @@ const App = () => (
       <div className="App">
         <Navbar/>
         <Route
-          path='/favourites'
+          path='/gif_app/favourites'
           component={FavouritesPage}
         />
         <Route
-          exact path='/'
+          exact path='/gif_app'
           component={Main}
         />
         <TopButton />

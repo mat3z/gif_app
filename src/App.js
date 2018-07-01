@@ -2,10 +2,10 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { configureStore } from "./store";
-import FavouritesPage from './containers/FavouritesPage';
-import Navbar from './containers/Navbar';
+import FavouritesPage from './components/FavouritesPage';
+import Navbar from './components/Navbar';
 import Main from './components/Main';
-import TopButton from './containers/TopButton'
+import TopButton from './components/TopButton'
 
 
 const store = configureStore();

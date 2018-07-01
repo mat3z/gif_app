@@ -39,8 +39,6 @@ const Navbar = () => (
               ? <Link to='/gif_app/' style={{...linkStyle}}>TRENDING</Link>
               : <Link to='/gif_app/favourites' style={{...linkStyle}}>FAVOURITES</Link>
             }
-            {/*<Link to='/gif_app/' style={{...linkStyle}}>TRENDING</Link>*/}
-            {/*<Link to='/gif_app/favourites' style={{...linkStyle}}>FAVOURITES</Link>*/}
           </div>
         )
       }

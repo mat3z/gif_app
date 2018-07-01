@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import GifsList from '../components/GifsList';
+import GifsList from './GifsList';
 
 class FavouritesPage extends Component {
   render() {

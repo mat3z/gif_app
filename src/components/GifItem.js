@@ -12,7 +12,7 @@ class GifItem extends Component {
       expandGif: false,
       isFavourite: this.checkIfFavourite(this.props.id)
     };
-    this.isFavouritePage = window.location.pathname.slice(1) === 'favourites';
+    this.isFavouritePage = window.location.pathname.split("/")[2] === 'favourites';
   }
 
   toggleExpandGif() {

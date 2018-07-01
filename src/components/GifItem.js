@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { CSSTransitionGroup } from 'react-transition-group'
+import MediaQuery from 'react-responsive';
 
 class GifItem extends Component {
   constructor(props) {
@@ -84,21 +84,30 @@ class GifItem extends Component {
     );
 
     return (
-      <div
-        className='gifBox'
-        style={{
-          display: 'flex'
-        }}
-      >
-        <img
-          src={this.props.images.fixed_height.url}
-          alt="gif"
-          height='150px'
-          onClick={this.toggleExpandGif}
-        />
-        {this.state.expandGif && detailsDiv}
+      <MediaQuery query="(min-device-width: 1224px)">
+        {(matches) => {
+          const { images } = this.props;
+          const properUrl = matches ? images.fixed_height.url : images.fixed_width.url;
+          const gifStyle = matches ? {display: 'flex'} : {};
+          const imgStyle = matches ? {} : {display: 'block', width: '100%', height: 'auto'};
 
-      </div>
+          return (
+            <div
+              className='gifBox'
+              style={{ ...gifStyle }}
+            >
+              <img
+                src={properUrl}
+                alt="gif"
+                onClick={this.toggleExpandGif}
+                style={{ ...imgStyle }}
+              />
+              {this.state.expandGif && detailsDiv}
+
+            </div>
+          )
+        }}
+      </MediaQuery>
     )
   }
 }

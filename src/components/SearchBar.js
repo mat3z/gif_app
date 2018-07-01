@@ -29,11 +29,13 @@ class SearchBar extends Component {
   constructor(props){
     super(props);
     this.timeout = null;
+    this.state = { value: this.props.query }
   }
 
   handleChange = e => {
     clearTimeout(this.timeout);
-    this.timeout = setTimeout(this.props.fetchGifs.bind(this, 'search', e.target.value), 2000)
+    this.timeout = setTimeout(this.props.fetchGifs.bind(this, 'search', e.target.value), 2000);
+    this.setState({value: e.target.value});
   };
 
   handleSubmit = e => {
@@ -54,6 +56,7 @@ class SearchBar extends Component {
                     placeholder="Search for gifs..."
                     name="gifName"
                     onChange={this.handleChange}
+                    value={this.state.value}
                     style={{...bar}}
                     autoComplete="off"
                   />
@@ -67,4 +70,8 @@ class SearchBar extends Component {
   }
 }
 
-export default connect(null, { fetchGifs })(SearchBar);
+const mapStateToProps = state => ({
+  query: state.gifs.query
+});
+
+export default connect(mapStateToProps, { fetchGifs })(SearchBar);

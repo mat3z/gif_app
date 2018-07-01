@@ -84,7 +84,7 @@ class GifItem extends Component {
     );
 
     return (
-      <MediaQuery query="(min-device-width: 1224px)">
+      <MediaQuery query="(min-device-width: 900px)">
         {(matches) => {
           const { images } = this.props;
           const properUrl = matches ? images.fixed_height.url : images.fixed_width.url;
@@ -103,7 +103,6 @@ class GifItem extends Component {
                 style={{ ...imgStyle }}
               />
               {this.state.expandGif && detailsDiv}
-
             </div>
           )
         }}

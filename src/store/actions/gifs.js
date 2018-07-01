@@ -20,8 +20,6 @@ export const fetchGifs = (method='trending', query='', limit=25) => {
     return fetch(api)
       .then(res => res.json())
       .then(res => {
-        console.log(method);
-        console.log(query);
         dispatch(setQuery(query));
         dispatch(receiveGifs(res.data))
       });
@@ -40,8 +38,6 @@ export const fetchMoreGifs = (method='trending', limit=4) => {
     return fetch(api)
       .then(res => res.json())
       .then(res => {
-        console.log(method);
-        console.log(query);
         dispatch(changeOffset(offset));
         dispatch(receiveMoreGifs(res.data));
       })

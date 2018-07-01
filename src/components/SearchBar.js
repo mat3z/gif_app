@@ -42,7 +42,7 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <MediaQuery query="(min-device-width: 1224px)">
+      <MediaQuery query="(min-device-width: 900px)">
         {(matches) => {
             let bar = matches ? barStyleBig: barStyleSmall;
 

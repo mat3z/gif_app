@@ -21,7 +21,7 @@ const linkStyleSmall = {
 };
 
 const Navbar = () => (
-  <MediaQuery query="(min-device-width: 1224px)">
+  <MediaQuery query="(min-device-width: 900px)">
     {(matches) => {
         let linkStyle = matches ? linkStyleBig : linkStyleSmall;
         return (
@@ -34,8 +34,8 @@ const Navbar = () => (
               fontSize: '2em'
             }}
           >
-            <Link to='/' style={{...linkStyle}}>Go to main page</Link>
-            <Link to='/favourites' style={{...linkStyle}}>Go to favourites</Link>
+            <Link to='/' style={{...linkStyle}}>TRENDING</Link>
+            <Link to='/favourites' style={{...linkStyle}}>FAVOURITES</Link>
           </div>
         )
       }

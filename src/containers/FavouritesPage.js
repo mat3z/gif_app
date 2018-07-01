@@ -7,10 +7,18 @@ class FavouritesPage extends Component {
       ? JSON.parse(localStorage['favouriteGifs'])
       : [];
 
-    if (!favouriteGifs) {
+    if (!favouriteGifs.length) {
       return (
         <div>
-          YOU DON'T HAVE ANY FAVOURITE GIFS
+          <h1
+            style={{
+              color: 'grey',
+              textAlign: 'center',
+              marginTop: '100px'
+            }}
+          >
+            YOU DON'T HAVE ANY FAVOURITE GIFS
+          </h1>
         </div>
       )
     }

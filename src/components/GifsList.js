@@ -7,7 +7,7 @@ const listStyleBig = {
   width: '70%',
   margin: '0 auto',
   flexWrap: 'wrap',
-  justifyContent: 'space-between',
+  justifyContent: 'space-around',
   alignItems: 'center'
 };
 
@@ -17,7 +17,6 @@ const listStyleSmall = {
   width: '80%',
   margin: '0 10%'
 };
-
 
 const GifsList = ({ list }) => {
   const gifList = list
@@ -29,7 +28,7 @@ const GifsList = ({ list }) => {
     ));
 
   return (
-    <MediaQuery query="(min-device-width: 1224px)">
+    <MediaQuery query="(min-device-width: 900px)">
       {(matches) => {
           let listStyle = matches ? listStyleBig : listStyleSmall;
 

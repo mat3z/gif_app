@@ -13,8 +13,8 @@ export const fetchGifs = (method='trending', query='', limit=25) => {
   return (dispatch, getState)=> {
 
     const api = method === 'trending' || method === 'search' && query === ''
-      ? `http://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}&limit=${limit}`
-      : `http://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&limit=${limit}&q=${query}`;
+      ? `https://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}&limit=${limit}`
+      : `https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&limit=${limit}&q=${query}`;
 
     dispatch(requestGifs());
     return fetch(api)
@@ -31,8 +31,8 @@ export const fetchMoreGifs = (method='trending', limit=4) => {
     const offset = getState().gifs.gifs.items.length;
     const query = getState().gifs.query;
     const api = method === 'trending' || method === 'search' && query === ''
-      ? `http://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}&limit=${limit}&offset=${offset}`
-      : `http://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&limit=${limit}&q=${query}&offset=${offset}`;
+      ? `https://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}&limit=${limit}&offset=${offset}`
+      : `https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&limit=${limit}&q=${query}&offset=${offset}`;
 
     dispatch(requestMoreGifs());
     return fetch(api)
